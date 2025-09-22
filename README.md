@@ -16,10 +16,97 @@ A sophisticated security agent that performs autonomous penetration testing on t
 
 ## 🏗️ Architecture
 
-```
-Frontend (Next.js) → FastAPI Backend → Online Boutique (GKE - 11 microservices)
-                           ↓
-                    Firestore + Vertex AI
+```mermaid
+graph TB
+    %% User and External Components
+    U[👤 Security Analyst]
+    OB[🌐 Online Boutique<br/>Target Application]
+    
+    %% Frontend Layer
+    F[🖥️ Next.js Frontend<br/>Professional Dashboard]
+    
+    %% Backend Services
+    B[⚡ FastAPI Backend<br/>Security Scanner + LangGraph Agent]
+    
+    %% Target Microservices (GKE)
+    subgraph GKE[☸️ Google Kubernetes Engine]
+        subgraph Microservices[🏪 Online Boutique Microservices]
+            FE[Frontend Service]
+            CS[Cart Service]
+            PCS[Product Catalog Service]
+            CUS[Currency Service]
+            PS[Payment Service]
+            SS[Shipping Service]
+            ES[Email Service]
+            COS[Checkout Service]
+            RS[Recommendation Service]
+            AS[Ad Service]
+            LG[Load Generator]
+        end
+    end
+    
+    %% Google Cloud Services
+    subgraph GCP[☁️ Google Cloud Platform]
+        subgraph CloudRun[🚀 Cloud Run]
+            F
+            B
+        end
+        
+        subgraph DataServices[💾 Data & AI Services]
+            FS[🔥 Firestore<br/>Scan Results Storage]
+            VAI[🤖 Vertex AI<br/>Gemini Model]
+        end
+        
+        subgraph Infrastructure[🏗️ Infrastructure]
+            AR[📦 Artifact Registry<br/>Container Images]
+            CB[🔨 Cloud Build<br/>CI/CD Pipeline]
+        end
+    end
+    
+    %% Security Scanning Flow
+    U -->|1. Start Security Scan| F
+    F -->|2. Scan Request| B
+    B -->|3. Autonomous Penetration Testing| OB
+    OB -->|4. Service Discovery & Vulnerability Detection| B
+    
+    %% Data Storage and AI Analysis
+    B -->|5. Store Findings| FS
+    B -->|6. Generate AI Summary| VAI
+    VAI -->|7. AI Analysis Results| B
+    B -->|8. Return Results| F
+    F -->|9. Display Security Report| U
+    
+    %% Target Application Access
+    B -.->|HTTP/gRPC Scanning| FE
+    B -.->|Service Analysis| CS
+    B -.->|API Testing| PCS
+    B -.->|Security Headers Check| CUS
+    B -.->|Endpoint Discovery| PS
+    B -.->|Configuration Analysis| SS
+    B -.->|Vulnerability Detection| ES
+    B -.->|gRPC Service Mapping| COS
+    B -.->|Security Assessment| RS
+    B -.->|Service Communication| AS
+    B -.->|Load Testing| LG
+    
+    %% Deployment Pipeline
+    AR -->|Container Images| CloudRun
+    CB -->|Deploy| CloudRun
+    
+    %% Styling
+    classDef frontend fill:#007BFF,stroke:#0056b3,stroke-width:2px,color:#fff
+    classDef backend fill:#28A745,stroke:#1e7e34,stroke-width:2px,color:#fff
+    classDef microservice fill:#FFC107,stroke:#e0a800,stroke-width:2px,color:#000
+    classDef gcp fill:#4285F4,stroke:#3367d6,stroke-width:2px,color:#fff
+    classDef data fill:#9C27B0,stroke:#7b1fa2,stroke-width:2px,color:#fff
+    classDef user fill:#6C757D,stroke:#545b62,stroke-width:2px,color:#fff
+    
+    class F frontend
+    class B backend
+    class FE,CS,PCS,CUS,PS,SS,ES,COS,RS,AS,LG microservice
+    class GCP,CloudRun,Infrastructure gcp
+    class FS,VAI data
+    class U user
 ```
 
 ### Technology Stack
