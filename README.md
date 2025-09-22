@@ -23,17 +23,17 @@ graph LR
     OB[🌐 Online Boutique]
 
     %% Frontend & Backend
-    F[🖥️ Next.js Frontend<br/>Professional Dashboard]
-    B[⚡ FastAPI Backend<br/>Security Scanner + LangGraph Agent]
+    F[🖥️ Next.js Frontend\nProfessional Dashboard]
+    B[⚡ FastAPI Backend\nSecurity Scanner + LangGraph Agent]
 
     %% Target Microservices (GKE)
     GKE[☸️ Online Boutique Microservices (GKE)]
 
     %% Google Cloud Services
-    FS[🔥 Firestore<br/>Scan Results Storage]
-    VAI[🤖 Vertex AI<br/>Gemini Model]
-    AR[📦 Artifact Registry<br/>Container Images]
-    CB[🔨 Cloud Build<br/>CI/CD Pipeline]
+    FS[🔥 Firestore\nScan Results Storage]
+    VAI[🤖 Vertex AI\nGemini Model]
+    AR[📦 Artifact Registry\nContainer Images]
+    CB[🔨 Cloud Build\nCI/CD Pipeline]
 
     %% Layout
     U -->|1. Start Security Scan| F
