@@ -35,23 +35,20 @@ graph LR
     AR[📦 Artifact Registry\nContainer Images]
     CB[🔨 Cloud Build\nCI/CD Pipeline]
 
-    %% Layout
+    %% Layout / Flows
     U -->|1. Start Security Scan| F
     F -->|2. Scan Request| B
     B -->|3. Autonomous Penetration Testing| OB
     OB -->|4. Service Discovery & Vulnerability Detection| B
 
-    %% Data Storage & AI
     B -->|5. Store Findings| FS
     B -->|6. Generate AI Summary| VAI
     VAI -->|7. AI Analysis Results| B
     B -->|8. Return Results| F
     F -->|9. Display Security Report| U
 
-    %% Backend scanning microservices
     B -.->|Scanning & Analysis| GKE
 
-    %% Deployment Pipeline
     AR -->|Container Images| F
     AR -->|Container Images| B
     CB -->|Deploy| F
