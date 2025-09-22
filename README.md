@@ -17,7 +17,7 @@ A sophisticated security agent that performs autonomous penetration testing on t
 ## 🏗️ Architecture
 
 ```mermaid
-graph TR
+graph BT
     %% User and External Components
     U[👤 Security Analyst]
     OB[🌐 Online Boutique<br/>Target Application]
