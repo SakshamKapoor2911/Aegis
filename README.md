@@ -26,8 +26,8 @@ graph LR
     F[🖥️ Next.js Frontend\nProfessional Dashboard]
     B[⚡ FastAPI Backend\nSecurity Scanner + LangGraph Agent]
 
-    %% Target Microservices (GKE)
-    GKE[☸️ Online Boutique Microservices (GKE)]
+    %% Target Microservices
+    GKE[☸️ Online Boutique Microservices]
 
     %% Google Cloud Services
     FS[🔥 Firestore\nScan Results Storage]
